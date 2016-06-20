@@ -7,7 +7,7 @@
 #################################################################################
 # --- stepwise multinomial logit ------------------------------------------------
 
-fitStepMultinom <- function(dx,y,x,stepw=TRUE,reflevel=1,marginal=TRUE,clean=TRUE){
+fitStepMultinom <- function(dx,y,x,stepw=TRUE,reflevel=1,clean=TRUE){
   require(MASS);require(nnet);require(mlogit);require(stringr)
   
   dx.clean <- if(clean==TRUE) as.data.frame(lapply(dx[complete.cases(dx),],droplevels)) else dx
