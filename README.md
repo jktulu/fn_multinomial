@@ -2,7 +2,16 @@ These functions modify functions in R packages _MASS_ [Venables & Ripley 2012] a
 
 **Functions:**
 
+`fitStepMultinom` implements backward-step multinomial logit estimation, whereby all covariates are included in the model and then iteratively removed or retained based on whether their marginal contribution to the variance of the dependent variable is statistically significant at p < .95. Arguments:
 
+  `dx`        data.frame that contains vector of dependent and independent variables in columns.
+  `y`         name of dependent variable (character vector of length 1)
+  `x`         right hand side string of formula without `~` listing names of all indepenent variables separated by `+` or `|`
+  `stepw`     boolean `TRUE` stepwise mode is implemented `FALSE` all independent variables are included (default `TRUE`)
+  `reflevel`  integer indicating reference level of dependent variable
+  `clean`     boolean `TRUE`(default) data.frame is stripped of incomplete cases and ununsed factor levels
+
+`decompMultinom` implements variance decomposition for mlogit objects 
 
 **References:**
 
