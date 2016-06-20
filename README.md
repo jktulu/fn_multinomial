@@ -4,32 +4,27 @@ These functions modify functions in R packages _MASS_ [Venables & Ripley 2012] a
 
 `fitStepMultinom` implements backward-step multinomial logit estimation, whereby all covariates are included in the model and then iteratively removed or retained based on whether their marginal contribution to the variance of the response variable is statistically significant at p < .95.
 
+`decompMultinom` implements variance decomposition for mlogit objects.
+
+`effectsMultinom` estimates marginal effects of a given covariate on probability of the response variable. This functions a modified version of `effects.mlogit` found in package _mlogit_.
+
+`effectsMultinomWrap` is a function wrapper for `effectsMultinom`, calculating marginal effects for all covariates in the model.
+
 	fitstepMultinom(dx, y, x, stepw = TRUE, reflevel = 1, clean = TRUE)
+	decompMultinom(m)
+	effectsMultinom(m, covariate = NULL, type = c("aa", "ar", "rr", "ra"), data = NULL)
+	effectsMultinomWrap(m, type = "rr")
+	
 * `dx`: data.frame that contains vector of response variable and covariates in columns.
 * `y`: name of response variable (character vector of length 1)
 * `x`: right hand side string of formula without `~` listing names of all covariates separated by `+` or `|`
 * `stepw`: boolean `TRUE` stepwise mode is implemented `FALSE` all covariates are included (default `TRUE`)
 * `reflevel`:  integer indicating reference level of response variable, default `1`
 * `clean`: boolean `TRUE`(default) data.frame is stripped of incomplete cases and ununsed factor levels
-
-`decompMultinom` implements variance decomposition for mlogit objects 
-
-	decompMultinom(m)
-* `m`: an object of class `mlogit`
- 
-`effectsMultinom` estimates marginal effects of a given covariate on probability of the response variable. This functions a modified version of `effects.mlogit` found in package _mlogit_.
-
-	effectsMultinom(m, covariate = NULL, type = c("aa", "ar", "rr", "ra"), data = NULL)
 * `m`: an object of class `mlogit`
 * `covariate`: character vector of length 1 providing the name of the covariate to estimate the marginal effect of
-* `type`: absolute `a` versus `r` representation of the marginal effect. The first lettre refers to the response variable, the second to the covariate. The type for elasticities is `rr`.
-* `data`: the original data for the model, which needs to be of class `mlogit.data`
- 
-`effectsMultinomWrap` is a function wrapper for `effectsMultinom`, calculating marginal effects for all covariates in the model.
-
-	effectsMultinomWrap(m, type = `rr`)
-* `m`: an object of class `mlogit`
-* `type`: absolute `a` versus `r` representation of the marginal effect. The first lettre refers to the response variable, the second to the covariate. The type for elasticities is `rr` (default).
+* `type`: absolute `"a"` versus `"r"` representation of the marginal effect. The first lettre refers to the response variable, the second to the covariate. The type for elasticities is `"rr"`.
+* `data`: the original data for the model, which needs to be of class `mlogit.data`.
 
 **References:**
 
