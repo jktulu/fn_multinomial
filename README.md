@@ -4,7 +4,7 @@ These functions modify functions in R packages _MASS_ [Venables & Ripley 2012] a
 
 **Functions**
 
-`fitStepMultinom` implements backward-step multinomial logit estimation, whereby all covariates are included in the model and then iteratively removed or retained based on whether their marginal contribution to the variance of the response variable is statistically significant at p < .95. 
+`fitStepMultinom` implements backward-step multinomial logit estimation, whereby all covariates are included in the model and then iteratively removed or retained based on whether their marginal contribution to the variance of the response variable is statistically significant at p < .05. 
 `decompMultinom` implements variance decomposition for mlogit objects. 
 `effectsMultinom` estimates marginal effects of a given covariate on probability of the response variable. This functions a modified version of `effects.mlogit` found in package _mlogit_. 
 `effectsMultinomWrap` is a function wrapper for `effectsMultinom`, calculating marginal effects for all covariates in the model.
@@ -19,10 +19,10 @@ These functions modify functions in R packages _MASS_ [Venables & Ripley 2012] a
 * `x`: right hand side string of formula without `~` listing names of all covariates separated by `+` or `|`
 * `stepw`: boolean `TRUE` stepwise mode is implemented `FALSE` all covariates are included (default `TRUE`)
 * `reflevel`:  integer indicating reference level of response variable, default `1`
-* `clean`: boolean `TRUE`(default) data.frame is stripped of incomplete cases and ununsed factor levels
+* `clean`: boolean `TRUE`(default) data.frame is freed of incomplete cases and ununsed factor levels
 * `m`: an object of class `mlogit`
 * `covariate`: character vector of length 1 providing the name of the covariate to estimate the marginal effect of
-* `type`: absolute `"a"` versus `"r"` representation of the marginal effect. The first lettre refers to the response variable, the second to the covariate. The type for elasticities is `"rr"`.
+* `type`: absolute `"a"` versus `"r"` relative representation of the marginal effect. The first lettre refers to the response variable, the second to the covariate. The type for elasticities is `"rr"`.
 * `data`: the original data for the model, which needs to be of class `mlogit.data`.
 
 **References**
