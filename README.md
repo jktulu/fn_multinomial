@@ -6,7 +6,7 @@ These functions modify functions in R packages _MASS_ [Venables & Ripley 2012] a
 
 `fitStepMultinom` implements backward-step multinomial logit estimation, whereby all covariates are included in the model and then iteratively removed or retained based on whether their marginal contribution to the variance of the response variable is statistically significant at p < .05. 
 `decompMultinom` implements variance decomposition for mlogit objects. 
-`effectsMultinom` estimates marginal effects of a given covariate on probability of the response variable. This functions a modified version of `effects.mlogit` found in package _mlogit_. 
+`effectsMultinom` estimates marginal effects of a given covariate on probability of the response variable. This function is a modified version of `effects.mlogit` found in package _mlogit_. 
 `effectsMultinomWrap` is a function wrapper for `effectsMultinom`, calculating marginal effects for all covariates in the model.
 
 	fitstepMultinom(dx, y, x, stepw = TRUE, reflevel = 1, clean = TRUE)
