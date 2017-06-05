@@ -27,6 +27,7 @@ fitStepMultinom <- function(dx,y,x,stepw=TRUE,reflevel=1,clean=TRUE){
 decompMultinom <- function(m){ 
   require(pbapply)
   fme <- str_trim(strsplit(strsplit(as.character(m$formula)[3],'|',TRUE)[[1]][2],'+',TRUE)[[1]])
+  fme[grep(':',fme)] <- sub(':','*',fme[grep(':',fme)])
   p <- length(fme)
   l.fmi <- lapply(1:p,function(i) combn(1:p,i))
   l.fmr <- lapply(1:p,function(i) combn(fme,i))
