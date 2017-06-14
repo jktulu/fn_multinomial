@@ -11,7 +11,7 @@ fitStepMultinom <- function(dx,y,x,stepw=TRUE,reflevel=1,clean=TRUE){
   require(MASS);require(nnet);require(mlogit);require(stringr)
   
   dx <- dx[,colnames(dx) %in% trimws(c(y,strsplit(x,'[+:*]')[[1]]))]
-  dx.clean <- if(clean==TRUE) as.data.frame(lapply(dx[complete.cases(dx),],droplevels)) else dx
+  dx.clean <- if(clean==TRUE) droplevels(dx[complete.cases(dx),],except=sapply(dx,class)!='factor') else dx
   if(stepw==TRUE) {
     x <- str_replace(x,'[|]','+')
     m0 <- stepAIC(multinom(as.formula(paste(y,x,sep='~ ')),dx.clean))
